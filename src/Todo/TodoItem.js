@@ -63,7 +63,7 @@ const TodoItem = (props) => {
             onClick={changeEdition}
             className={styles.todoBtn}
           >
-            제출
+            저장
           </button>
           <button
             type="button"
