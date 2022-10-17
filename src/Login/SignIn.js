@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { Link } from "react-router-dom";
-import classes from "./Login.module.css";
 
-const Login = (props) => {
+const SignIn = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   const emailReducer = (state, action) => {
@@ -81,39 +80,40 @@ const Login = (props) => {
   };
 
   return (
-    // <Card className={classes.login}>
-    <form onSubmit={submitHandler}>
-      <div
-        className={`${classes.control} ${
-          emailState.isValid === false ? classes.invalid : ""
-        }`}
-      >
-        <label htmlFor="email">E-Mail</label>
-        <input
-          type="email"
-          id="email"
-          value={emailState.value}
-          onChange={emailChangeHandler}
-          onBlur={validateEmailHandler}
-        />
-      </div>
-      <div
-        className={`${classes.control} ${
-          passwordState.isValid === false ? classes.invalid : ""
-        }`}
-      >
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={passwordState.value}
-          onChange={passwordChangeHandler}
-          onBlur={validatePasswordHandler}
-        />
-      </div>
-      <div className={classes.actions}>
-        <Link to="/register">회원가입</Link>
-        <button type="submit" className={classes.btn} disabled={!formIsValid}>
+    <form onSubmit={submitHandler} className="wrapper">
+      <ul className="listWrapper">
+        <li>
+          <label htmlFor="email" className="cmm-label">
+            E-Mail
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={emailState.value}
+            onChange={emailChangeHandler}
+            onBlur={validateEmailHandler}
+            className="cmm-input"
+          />
+        </li>
+        <li>
+          <label htmlFor="password" className="cmm-label">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={passwordState.value}
+            onChange={passwordChangeHandler}
+            onBlur={validatePasswordHandler}
+            className="cmm-input"
+          />
+        </li>
+      </ul>
+      <div>
+        <Link to="/signup" className="cmm-btn">
+          회원가입
+        </Link>
+        <button type="submit" disabled={!formIsValid} className="cmm-btn">
           로그인
         </button>
       </div>
@@ -121,4 +121,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default SignIn;

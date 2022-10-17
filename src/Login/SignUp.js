@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
-import classes from "./Login.module.css";
+
+import { API } from "../config.js";
 
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
@@ -27,7 +28,7 @@ const passwordReducer = (state, action) => {
   }
   return { value: "", isValid: false };
 };
-const Register = () => {
+const SignUp = () => {
   const navigate = useNavigate();
   const [formIsValid, setFormIsValid] = useState(false);
 
@@ -77,13 +78,13 @@ const Register = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    registerHandler(emailState.value, passwordState.value);
+    signUpHandler(emailState.value, passwordState.value);
   };
 
-  const registerHandler = (email, password) => {
+  const signUpHandler = (email, password) => {
     localStorage.setItem("isLoggedIn", "1");
 
-    fetch("https://pre-onboarding-selection-task.shop/auth/signup", {
+    fetch(API.SIGNIN, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,42 +101,42 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div
-        className={`${classes.control} ${
-          emailState.isValid === false ? classes.invalid : ""
-        }`}
-      >
-        <label htmlFor="email">E-Mail</label>
-        <input
-          type="email"
-          id="email"
-          value={emailState.value}
-          onChange={emailChangeHandler}
-          onBlur={validateEmailHandler}
-        />
-      </div>
-      <div
-        className={`${classes.control} ${
-          passwordState.isValid === false ? classes.invalid : ""
-        }`}
-      >
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={passwordState.value}
-          onChange={passwordChangeHandler}
-          onBlur={validatePasswordHandler}
-        />
-      </div>
-      <div className={classes.actions}>
-        <button type="submit" className={classes.btn} disabled={!formIsValid}>
-          회원가입
+    <form onSubmit={submitHandler} className="wrapper">
+      <ul className="listWrapper">
+        <li>
+          <label htmlFor="email" className="cmm-label">
+            E-Mail
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={emailState.value}
+            onChange={emailChangeHandler}
+            onBlur={validateEmailHandler}
+            className="cmm-input"
+          />
+        </li>
+        <li>
+          <label htmlFor="password" className="cmm-label">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={passwordState.value}
+            onChange={passwordChangeHandler}
+            onBlur={validatePasswordHandler}
+            className="cmm-input"
+          />
+        </li>
+      </ul>
+      <div>
+        <button type="submit" disabled={!formIsValid} className="cmm-btn">
+          제출
         </button>
       </div>
     </form>
   );
 };
 
-export default Register;
+export default SignUp;

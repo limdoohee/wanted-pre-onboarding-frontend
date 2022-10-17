@@ -1,0 +1,17 @@
+*,
+::before,
+::after {
+  border-width: 0px;
+  border-style: solid;
+  box-sizing: border-box;
+  font-size: 13px;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

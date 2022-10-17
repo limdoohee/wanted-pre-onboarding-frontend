@@ -1,0 +1,61 @@
+.inputTodo {
+  width: 100%;
+  min-width: 0px;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  position: relative;
+  appearance: none;
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+  height: 46px;
+  border-radius: 0.375rem;
+  border-width: 2px;
+  border-style: solid;
+  border-image: initial;
+  border-color: transparent;
+  background: #edf2f7;
+}
+
+.inputTodo:focus {
+  background: transparent;
+  border-color: rgb(49, 130, 206);
+}
+
+.addTodo {
+  display: inline-flex;
+  appearance: none;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  width: auto;
+  line-height: 1.2;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  height: 46px;
+  min-width: 2.5rem;
+  padding-inline-start: 2rem;
+  padding-inline-end: 2rem;
+  background: #1da1f2;
+  color: #fff;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  margin-top: 0px;
+  margin-inline: 0.5rem 0px;
+  margin-bottom: 0px;
+}
+
+.todoForm {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

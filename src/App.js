@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
-import Login from "./Login/Login";
-import Register from "./Login/Register";
+import SignIn from "./Login/SignIn";
 import Todo from "./Todo/Todo";
+import { API } from "./config.js";
+import SignUp from "./Login/SignUp";
+import "./config.css";
+import "./common.css";
 
 function App() {
   const navigate = useNavigate();
@@ -15,7 +18,7 @@ function App() {
   }, []);
 
   const loginHandler = (email, password) => {
-    fetch("https://pre-onboarding-selection-task.shop/auth/signin", {
+    fetch(API.LOGIN, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,15 +45,15 @@ function App() {
       <Route>
         <Route
           path="/"
-          element={isLoggedIn ? <Todo /> : <Login onLogin={loginHandler} />}
+          element={isLoggedIn ? <Todo /> : <SignIn onLogin={loginHandler} />}
         />
         <Route
           path="/todo"
           element={isLoggedIn ? <Todo /> : <Navigate to="/" />}
         />
       </Route>
-      <Route path="/register" element={<Register />} />
-      <Route path="/Login" element={<Login onLogin={loginHandler} />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/Login" element={<SignIn onLogin={loginHandler} />} />
     </Routes>
   );
 }
