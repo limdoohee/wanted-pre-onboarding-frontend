@@ -55,3 +55,7 @@
   cursor: pointer;
   font-size: 13px;
 }
+
+.cmm-btn:disabled {
+  opacity: 0.5;
+}
